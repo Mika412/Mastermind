@@ -1,13 +1,10 @@
 package strategy;
 
 
-import edu.princeton.cs.algs4.StdOut;
+public class KnuthStrategy extends Strategy {
 
 
-public class Knuth2 extends Strategy {
-
-
-    public Knuth2(int codeLength) {
+    public KnuthStrategy(int codeLength) {
         super(codeLength);
     }
 
@@ -17,7 +14,7 @@ public class Knuth2 extends Strategy {
                 answer);
 
         int maxMinimum = 0;
-        StdOut.println(this.allCodes.size() + " " + this.consistentCodes.size());
+        System.out.println(this.allCodes.size() + " " + this.consistentCodes.size());
         for (Code code : this.allCodes) {
             int minimum = Integer.MAX_VALUE;
 

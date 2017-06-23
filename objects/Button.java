@@ -1,4 +1,4 @@
-package pObjects;
+package objects;
 
 import processing.core.PApplet;
 import utils.Constants;

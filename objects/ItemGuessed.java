@@ -1,6 +1,5 @@
-package pObjects;
+package objects;
 
-import edu.princeton.cs.algs4.StdOut;
 import processing.core.PApplet;
 import strategy.Answer;
 import strategy.Code;

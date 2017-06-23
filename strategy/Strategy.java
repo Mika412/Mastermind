@@ -22,7 +22,6 @@ public abstract class Strategy implements IStrategy {
 		this.consistentCodes.clear();
 		this.consistentCodes.addAll(this.allCodes);
 		this.lastGuess = Code.createRandom(CODE_LENGTH);
-//		this.lastGuess = new Code("1111");
 		return this.lastGuess;
 	}
 
@@ -36,15 +35,6 @@ public abstract class Strategy implements IStrategy {
 		}
 		return result;
 	}
-
-	/*protected void removeInconsistentCodes(List<Code> codes, Code lastGuess,
-			Answer answer) {
-		for (int i = codes.size() - 1; i >= 0; i--) {
-			if (!lastGuess.compare(codes.get(i)).equals(answer)) {
-				codes.remove(i);
-			} 
-		}
-	}*/
 
 	protected void removeInconsistentCodes(List<Code> codes, Code lastGuess,
 										   Answer answer) {

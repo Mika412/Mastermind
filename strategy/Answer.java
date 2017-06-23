@@ -28,15 +28,6 @@ public class Answer {
         return result;
     }
 
-    public boolean greater(Object other) {
-        boolean result = false;
-        if (other instanceof Answer) {
-            Answer that = (Answer) other;
-            result = (this.blacks > that.blacks && this.whites <= that.whites);
-        }
-        return result;
-    }
-
     @Override
     public String toString() {
         return "B: " + this.blacks + " W: " + this.whites;

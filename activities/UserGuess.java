@@ -1,8 +1,7 @@
 package activities;
 
-import edu.princeton.cs.algs4.StdOut;
-import pObjects.ItemChoose;
-import pObjects.ItemGuessed;
+import objects.ItemChoose;
+import objects.ItemGuessed;
 import processing.core.PApplet;
 import strategy.Answer;
 import strategy.Code;
@@ -85,7 +84,7 @@ public class UserGuess extends PApplet{
 
     public void generateRandom(){
         generatedCode = Code.createRandom(numberBalls);
-        StdOut.println(generatedCode);
+        System.out.println(generatedCode);
     }
 
     public static void run(int nBalls) {

@@ -1,4 +1,4 @@
-package pObjects;
+package objects;
 
 import processing.core.PApplet;
 import utils.Constants;
@@ -68,7 +68,6 @@ public class ItemChoose {
                     float disX = ((Constants.windowWidth*3/5) / nBalls) - (Constants.windowWidth*3/5) / (2 * nBalls) - parent.mouseX % ((Constants.windowWidth*3/5) / nBalls);
                     float disY = ypos + Constants.defaultColorBallWidth/2 - parent.mouseY;
                     if (parent.sqrt(parent.sq(disX) + parent.sq(disY)) < (Constants.defaultColorBallWidth) / 2 && parent.mouseX < (Constants.windowWidth*3/5)) {
-                        //StdOut.println(parent.mouseX / ((Constants.windowWidth*3/5) / nBalls) + " " +chosenColor);
                         colorArray[parent.mouseX / ((Constants.windowWidth*3/5) / nBalls)] = chosenColor;
                         selectedColor = false;
                         if(areAllChosen())
@@ -106,7 +105,6 @@ public class ItemChoose {
             }
             reset();
         }
-//        StdOut.println(sub);
         return sub;
     }
 

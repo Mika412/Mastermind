@@ -1,6 +1,5 @@
-package pObjects;
+package objects;
 
-import edu.princeton.cs.algs4.StdOut;
 import processing.core.PApplet;
 import strategy.Answer;
 import strategy.Code;
@@ -36,9 +35,8 @@ public class ItemChooseAnswer implements MouseListener {
         btnSubmit.setReady(true);
         this.answerColorArray = new int[nBalls];
         this.code = code;
-        StdOut.println(code.toString());
-                    StdOut.println(this.code.toString().charAt(2));
-
+        System.out.println(code.toString());
+        System.out.println(this.code.toString().charAt(2));
         reset();
     }
 
@@ -68,7 +66,6 @@ public class ItemChooseAnswer implements MouseListener {
 
         for(int i = 0; i < 3; i++){
             parent.fill(Constants.colors[i+7]);
-            //parent.ellipse(((Constants.windowWidth*2/5) / 3)* i + (Constants.windowWidth*2/5) / (2 * 3) + Constants.windowWidth*2/5 + Constants.defaultColorBallWidth,
             parent.ellipse((Constants.windowWidth*3/5) + ((Constants.windowWidth*2/5) / 3)* i  + (Constants.windowWidth*2/5) / (2 * 3),
                     ypos + Constants.defaultColorBallWidth*2-20,
                     Constants.defaultColorBallWidth,
@@ -93,18 +90,13 @@ public class ItemChooseAnswer implements MouseListener {
                     float disX = ((Constants.windowWidth*3/5) / nBalls) - (Constants.windowWidth*3/5) / (2 * nBalls) - parent.mouseX % ((Constants.windowWidth*3/5) / nBalls);
                     float disY = ypos + Constants.defaultColorBallWidth*2-20 - parent.mouseY;
                     if (parent.sqrt(parent.sq(disX) + parent.sq(disY)) < (Constants.defaultColorBallWidth) / 2 && parent.mouseX < (Constants.windowWidth*3/5)) {
-//                        StdOut.println(parent.mouseX / ((Constants.windowWidth*3/5) / nBalls) + " " +chosenColor);
                         answerColorArray[parent.mouseX / ((Constants.windowWidth*3/5) / nBalls)] = chosenColor;
                         selectedColor = false;
                     }
                 }
                 float disX = ((Constants.windowWidth*2/5) / (2 * 3)) -  (parent.mouseX - Constants.windowWidth*3/5) % ((Constants.windowWidth*2/5) / 3);
-//                StdOut.println((parent.mouseX - Constants.windowWidth*3/5) % ((Constants.windowWidth*2/5) / 3));
-//                StdOut.println(disX);
-
                 float disY = ypos + Constants.defaultColorBallWidth*2-20 - parent.mouseY;
                 if (parent.sqrt(parent.sq(disX) + parent.sq(disY)) < (Constants.defaultColorBallWidth) / 2) {
-//                    StdOut.println("Hit something!");
                     chosenColor =(parent.mouseX - Constants.windowWidth*3/5) / ((Constants.windowWidth*2/5) / 3) + 7;
                     selectedColor = true;
                 }
@@ -114,19 +106,9 @@ public class ItemChooseAnswer implements MouseListener {
         }
     }
 
-    public boolean areAllChosen(){
-        int count = 0;
-        for (int i = 0; i < nBalls; i++) {
-            if(answerColorArray[i] != 9){
-                count++;
-            }
-        }
-        return count == nBalls ? true : false;
-    }
-
     //Created this function because was to lazy to implement a Callback class
     public Answer checkSubmittedGuess(){
-        Answer tempAnswer = null;
+        Answer tempAnswer;
         int blacks = 0;
         int whites = 0;
         if(btnSubmit.checkClicked()){
@@ -136,7 +118,6 @@ public class ItemChooseAnswer implements MouseListener {
                 else if(answerColorArray[i] == 7)
                     whites ++;
             }
-            //reset();
             tempAnswer = new Answer(blacks, whites);
             parent.delay(500);
             return tempAnswer;
@@ -151,36 +132,24 @@ public class ItemChooseAnswer implements MouseListener {
     public void changeCode(Code code){
         this.code = code;
     }
-
-
-
-
-
-
-
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        StdOut.print("Released");
         doOnceButtonPress = false;
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
     }
 }

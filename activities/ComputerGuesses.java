@@ -1,8 +1,7 @@
 package activities;
 
-import edu.princeton.cs.algs4.StdOut;
-import pObjects.ItemChooseAnswer;
-import pObjects.ItemGuessed;
+import objects.ItemChooseAnswer;
+import objects.ItemGuessed;
 import processing.core.PApplet;
 import strategy.*;
 import utils.Constants;
@@ -17,7 +16,6 @@ public class ComputerGuesses extends PApplet{
 
     List<ItemGuessed> guessedList = new ArrayList<>();
     ItemChooseAnswer chooseItem;
-    Code generatedCode = null;
     static private int numberBalls;
     static IStrategy STRATEGY;
 
@@ -28,22 +26,12 @@ public class ComputerGuesses extends PApplet{
     }
 
     public void setup() {
-        STRATEGY = new Knuth2(numberBalls);
+        STRATEGY = new KnuthStrategy(numberBalls);
         guess(null);
         chooseItem = new ItemChooseAnswer(this, 0, Constants.windowHeight - Constants.hightChoice,
                 Constants.windowWidth,
                 Constants.hightChoice,
                 numberBalls, guess);
-        /*for(int i = 0; i < 8; i++) {
-            guessedList.add(new ItemGuessed(this,
-                    0,
-                    Constants.windowHeight - Constants.guessedRectangleHeight * (guessedList.size() + 1) - Constants.hightChoice-Constants.hightGap,
-                    Constants.windowWidth,
-                    Constants.guessedRectangleHeight,
-                    numberBalls,
-                    new Code("123456"),
-                    new Answer(3, 2)));
-        }*/
     }
 
     public void draw() {
@@ -61,7 +49,7 @@ public class ComputerGuesses extends PApplet{
     public void checkSubmitted(){
         Answer answer = chooseItem.checkSubmittedGuess();
         if(answer != null){
-            StdOut.println("Answer " + answer.blacks + " " + answer.whites);
+            System.out.println("Answer " + answer.blacks + " " + answer.whites);
             guessedList.add(new ItemGuessed(this,
                     0,
                     Constants.windowHeight - Constants.guessedRectangleHeight * (guessedList.size()+1) - Constants.hightChoice-Constants.hightGap,
@@ -78,7 +66,6 @@ public class ComputerGuesses extends PApplet{
 
             chooseItem.changeCode(guess);
             checkExceedPositioning();
-            //StdOut.println(guess.toString());
         }
     }
 
